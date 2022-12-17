@@ -4,7 +4,7 @@ use serde;
 #[serde(tag = "response_type")]
 #[serde(rename_all = "snake_case")]
 pub enum Response {
-    Succes {
+    Success {
         #[serde(skip_serializing_if = "Option::is_none")]
         #[serde(flatten)]
         data: Option<DataRespose>,

@@ -60,10 +60,10 @@ fn main() {
             let _ = stream_reader.send(match request {
                 Request::Store { key, hash } => {
                     storage.lock().unwrap().insert(key, hash);
-                    Response::Succes { data: None }
+                    Response::Success { data: None }
                 }
                 Request::Load { key } => match storage.lock().unwrap().get(&key) {
-                    Some(hash) => Response::Succes {
+                    Some(hash) => Response::Success {
                         data: Some(DataRespose::new(key, hash.clone())),
                     },
                     None => Response::KeyNotFound,
